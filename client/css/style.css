@@ -1,0 +1,134 @@
+body {
+		font-family: 'Raleway', sans-serif;
+		background-color: #e0eaf5;
+		font-size:15px;
+		margin-top:70px;
+		margin-right: 20px;
+		margin-left:20px;
+		}
+
+h3 {
+		font-weight:700;
+		}
+
+th {
+    background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f6f6f6 30%, #f6f6f6 30%, #e5e5e5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(30%,#f6f6f6), color-stop(30%,#f6f6f6), color-stop(100%,#e5e5e5));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f6f6f6 30%,#f6f6f6 30%,#e5e5e5 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f6f6f6 30%,#f6f6f6 30%,#e5e5e5 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f6f6f6 30%,#f6f6f6 30%,#e5e5e5 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f6f6f6 30%,#f6f6f6 30%,#e5e5e5 100%);
+ 
+	padding: 8px 10px;
+	color: #000;
+	border: 1px solid #E6E6E6;
+}
+
+td {
+	cursor: pointer;
+}
+
+h2 a {
+		color:#fff;
+		text-transform: uppercase;
+}
+
+h2 a:hover {
+		color:#fff;
+}
+
+a {
+		color:#468dc4;
+		text-decoration:none;
+		}
+
+.whitebox {
+		clear:both;
+		margin-bottom:40px;
+		padding:20px;
+		background-color:#fff;
+		}
+
+.description {
+		min-height: 208px;
+		}
+.seriesimage {
+		float:left;
+		padding-right:20px;
+		}
+
+strong {
+		font-weight:600;
+		}
+
+/* ////////// WATCHINGLISTE (persoenliche Serienliste) //////////// */
+.plusSign {
+	font-size: xx-large;
+    padding: 5;
+    line-height: 0.5;
+}
+
+/* --- Schaue-ich-gerade-Tabelle ---- */
+.prozessSpalte {
+	width: 50px;
+}
+
+/* ////////// USERPROFIL ///////////// */
+
+.userinfo {
+	margin-bottom:20px;
+}
+
+/* --- Legende GenreStatistik --- */
+.legendenSpalteSchrift {
+	padding-left:15px;
+}
+
+.legendenZeile {
+	border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+}
+
+.legend {
+    padding-top:20px;
+}
+
+.legend .title {
+    display: block;
+    margin-bottom: 0.5em;
+    line-height: 1.2em;
+    padding: 0 0.3em;
+}
+
+.legend .color-sample {
+    display: block;
+    float: left;
+    width: 1em;
+    height: 1em;
+    border: 2px solid; /* Comment out if you don't want to show the fillColor */
+    border-radius: 0.5em; /* Comment out if you prefer squarish samples */
+    margin-right: 0.5em;
+}
+
+/* //////////// INDEX ////////// */
+.listInPanel {
+	padding: 10px 0;
+}
+
+/* //////////// Searchbar ////////*/
+.searchbutton {
+	background-color:#212121;
+	border-color:#212121;
+	color:#ccc;
+	background-image: none;
+	text-shadow:none;
+}
+
+.searchbutton:hover {
+	background-color:#212121;
+	border-color:#212121;
+	color:#fff;
+	background-image: none;
+}
+

@@ -22,6 +22,9 @@ var express = require('express'),
 
 app.use(jsonParser);
 
+/// REGISTER FOLDER-REFERENCES - like js-Folder, CSS-Folder, bower-Folders, etc.
+require("./routes/folder-references/import").register(app);
+
 var lastServerWordpresUpdate;
 var lastServerDiagnoseUpdate;
 var lastServerOpsUpdate;
@@ -205,8 +208,8 @@ cron.schedule('*/15 * * * * *', function(){
                                 } else {
                                     var loop = 0;
                                     for(var i = 0; i < opsdata.length; i++) {
-                                        console.log("Changed Diagnose item "+i+": " + opsdata[i].changed);
-                                        console.log("LastUpdate Diagnose item "+i+": " + lastServerOpsUpdate);
+                                        console.log("Changed OPS item "+i+": " + opsdata[i].changed);
+                                        console.log("LastUpdate OPS item "+i+": " + lastServerOpsUpdate);
                                         if(opsdata[i].changed > lastServerOpsUpdate){
                                             console.log("IT WILL UPDATE NOW");
                                             mongoose.model('Ops_rep').findOneAndUpdate({ fatherid:opsdata[i]._id }, {
@@ -251,8 +254,8 @@ cron.schedule('*/15 * * * * *', function(){
                                 } else {
                                     var loop = 0;
                                     for(var i = 0; i < abbreviationdata.length; i++) {
-                                        console.log("Changed Diagnose item "+i+": " + abbreviationdata[i].changed);
-                                        console.log("LastUpdate Diagnose item "+i+": " + lastServerAbbreviationUpdate);
+                                        console.log("Changed Abbreviation item "+i+": " + abbreviationdata[i].changed);
+                                        console.log("LastUpdate Abbreviation item "+i+": " + lastServerAbbreviationUpdate);
                                         if(abbreviationdata[i].changed > lastServerAbbreviationUpdate){
                                             console.log("IT WILL UPDATE NOW");
                                             mongoose.model('Abbreviation_rep').findOneAndUpdate({ fatherid:abbreviationdata[i]._id }, {
@@ -524,14 +527,21 @@ cron.schedule('*/15 * * * * *', function(){
 
 
 
-app.get('/patient', function(req,res,next){
-        mongoose.model('Patient').find(function (err, patient) {
-            if (err) {
-                res.send("There was a problem getting the information from the database.");
-            } else {
-                res.json(patient);
-            }
-        })
+app.get('/patient', function(req,res){
+   
+            mongoose.model('Patient').find(function (err, patient) {
+                if (err) {
+                    res.send("There was a problem getting the information from the database.");
+                } else {
+                    var patientdata = patient;
+                    res.render('patient.ejs', {
+                        patient:patient
+                    });
+
+                }
+            })
+        
+    
 });
 
 app.get('/patient/:name', function(req,res){
