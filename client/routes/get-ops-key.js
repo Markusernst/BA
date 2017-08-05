@@ -1,7 +1,7 @@
 function getOpsKey(app, mongoose, jsonParser, http) {
 	return function(req, res) {
 		var options = {
-                host: "localhost",
+                host: "127.0.0.1",
                 port: 8888,
                 path: "/ops/"+req.params.ops,
                 method: "GET",

@@ -1,15 +1,15 @@
 body {
-		font-family: 'Raleway', sans-serif;
-		background-color: #e0eaf5;
-		font-size:15px;
-		margin-top:70px;
-		margin-right: 20px;
-		margin-left:20px;
-		}
+	font-family: 'Raleway', sans-serif;
+	background-color: #e0eaf5;
+	font-size:15px;
+	margin-top:70px;
+	margin-right: 20px;
+	margin-left:20px;
+}
 
 h3 {
-		font-weight:700;
-		}
+	font-weight:700;
+}
 
 th {
     background: #ffffff;
@@ -30,18 +30,78 @@ td {
 }
 
 h2 a {
-		color:#fff;
-		text-transform: uppercase;
+	color:#fff;
+	text-transform: uppercase;
 }
 
 h2 a:hover {
-		color:#fff;
+	color:#fff;
 }
 
 a {
-		color:#468dc4;
-		text-decoration:none;
-		}
+	color:#468dc4;
+	text-decoration:none;
+}
+
+textarea {
+   resize: vertical;
+}
+
+.modal-body {
+	padding:5px;
+	padding-bottom:10px;
+}
+
+.modal-footer{
+	padding: 0px;
+}
+
+button.close {
+    padding: 3px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-inverse {
+	background-image: -webkit-linear-gradient(top,#5599ca 0,#3492d6 100%);
+    background-image: -o-linear-gradient(top,#5599ca 0,#3492d6 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#5599ca),to(#3492d6));
+    background-image: linear-gradient(to bottom,#5599ca 0,#3492d6 100%);
+}
+
+.floating-action-button1 {
+  position: fixed;
+  bottom: 40px;
+  right: 320px;
+ }
+  
+.floating-action-button2 {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+ }
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.open>a {
+    background-image: -webkit-linear-gradient(top,#356ea5 0,#146cc1 100%);
+    background-image: -o-linear-gradient(top,#356ea5 0,#146cc1 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#356ea5),to(#146cc1));
+    background-image: linear-gradient(to bottom,#356ea5 0,#146cc1 100%);
+}
+
+.navbar-inverse .navbar-brand:hover, .nav-item:hover {
+
+    background-image: -webkit-linear-gradient(top,#3082d2 0,#3082d2 100%);
+    background-image: -o-linear-gradient(top,#3082d2 0,#3082d2 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#3082d2),to(#3082d2));
+    background-image: linear-gradient(to bottom,#3082d2 0,#3082d2 100%);
+
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
 
 .whitebox {
 		clear:both;

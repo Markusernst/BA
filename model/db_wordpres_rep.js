@@ -1,2 +1,2 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/db_wordpres');
+mongoose.connect('mongodb://127.0.0.1/db_wordpres');

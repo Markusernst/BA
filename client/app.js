@@ -26,6 +26,7 @@ app.use(jsonParser);
 require("./routes/folder-references/import").register(app);
 require("./routes/import").register(app, mongoose, jsonParser, http);
 
+
 /*Periodic Schedule with CRON-NODE to Update Servers if they are reachable*/
 cron.schedule('*/15 * * * * *', function(){
 
@@ -37,7 +38,7 @@ cron.schedule('*/15 * * * * *', function(){
 
         /*Ping Server to check availability*/
         var pingoptions = {
-                host: "localhost",
+                host: "127.0.0.1",
                 port: 8888,
                 path: "/access",
                 method: "GET",
@@ -52,7 +53,7 @@ cron.schedule('*/15 * * * * *', function(){
                 
                 /*Define options for the Server-Call*/
                 var optionsRepWordpres = {
-                    host: "localhost",
+                    host: "127.0.0.1",
                     port: 8888,
                     path: "/wordpres/changed/"+emulated.lastServerWordpresUpdate,
                     method: "GET",
@@ -63,7 +64,7 @@ cron.schedule('*/15 * * * * *', function(){
                     };
 
                 var optionsRepDiagnose = {
-                    host: "localhost",
+                    host: "127.0.0.1",
                     port: 8888,
                     path: "/diagnose/changed/"+emulated.lastServerDiagnoseUpdate,
                     method: "GET",
@@ -74,7 +75,7 @@ cron.schedule('*/15 * * * * *', function(){
                     };
 
                 var optionsRepOps = {
-                    host: "localhost",
+                    host: "127.0.0.1",
                     port: 8888,
                     path: "/ops/changed/"+emulated.lastServerOpsUpdate,
                     method: "GET",
@@ -85,7 +86,7 @@ cron.schedule('*/15 * * * * *', function(){
                     };
 
                 var optionsRepAbbreviation = {
-                    host: "localhost",
+                    host: "127.0.0.1",
                     port: 8888,
                     path: "/abbreviation/changed/"+emulated.lastServerAbbreviationUpdate,
                     method: "GET",
@@ -285,7 +286,7 @@ cron.schedule('*/15 * * * * *', function(){
                     } else {
                         var loop = 0;
                         for(var i = 0; i < wordpres_rep.length; i++) {                            
-                            if(wordpres_rep[i].changed > lastWordpresUpdate){
+                            if(wordpres_rep[i].changed > emulated.lastWordpresUpdate){
 
                                 var name = wordpres_rep[i].name;
                                 var body = wordpres_rep[i].body;
@@ -301,7 +302,7 @@ cron.schedule('*/15 * * * * *', function(){
                                 var jsondata = JSON.stringify(data);
 
                                 var optionsWordpres = {
-                                host: "localhost",
+                                host: "127.0.0.1",
                                 port: 8888,
                                 path: "/wordpres/id/"+wordpres_rep[i].fatherid,
                                 method: "PUT",
@@ -342,7 +343,7 @@ cron.schedule('*/15 * * * * *', function(){
                         var loop = 0;
                         for(var i = 0; i < diagnose_rep.length; i++) {
                             
-                            if(diagnose_rep[i].changed > lastDiagnoseUpdate){
+                            if(diagnose_rep[i].changed > emulated.lastDiagnoseUpdate){
 
                                 var longterm = diagnose_rep[i].longterm;
                                 var key = diagnose_rep[i].key;
@@ -360,7 +361,7 @@ cron.schedule('*/15 * * * * *', function(){
                                 var jsondata = JSON.stringify(data);
 
                                 var optionsDiagnose = {
-                                host: "localhost",
+                                host: "127.0.0.1",
                                 port: 8888,
                                 path: "/diagnose/id/"+diagnose_rep[i].fatherid,
                                 method: "PUT",
@@ -400,7 +401,7 @@ cron.schedule('*/15 * * * * *', function(){
                         var loop = 0;
                         for(var i = 0; i < ops_rep.length; i++) {
                             
-                            if(ops_rep[i].changed > lastOpsUpdate){
+                            if(ops_rep[i].changed > emulated.lastOpsUpdate){
 
                                 var name = ops_rep[i].name;
                                 var ops = ops_rep[i].ops;
@@ -416,7 +417,7 @@ cron.schedule('*/15 * * * * *', function(){
                                 var jsondata = JSON.stringify(data);
 
                                 var optionsOps = {
-                                host: "localhost",
+                                host: "127.0.0.1",
                                 port: 8888,
                                 path: "/ops/id/"+ops_rep[i].fatherid,
                                 method: "PUT",
@@ -456,7 +457,7 @@ cron.schedule('*/15 * * * * *', function(){
                         var loop = 0;
                         for(var i = 0; i < abbreviation_rep.length; i++) {
                             
-                            if(abbreviation_rep[i].changed > lastAbbreviationUpdate){
+                            if(abbreviation_rep[i].changed > emulated.lastAbbreviationUpdate){
 
                                 var name = abbreviation_rep[i].name;
                                 var ops = abbreviation_rep[i].ops;
@@ -472,7 +473,7 @@ cron.schedule('*/15 * * * * *', function(){
                                 var jsondata = JSON.stringify(data);
 
                                 var optionsAbbreviation = {
-                                host: "localhost",
+                                host: "127.0.0.1",
                                 port: 8888,
                                 path: "/abbreviation/id/"+abbreviation_rep[i].fatherid,
                                 method: "PUT",

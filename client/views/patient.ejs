@@ -3,14 +3,20 @@
 		<meta charset="utf-8" /> 
 
 		<title>Patienten</title>
-			<link href='http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100' rel='stylesheet' type='text/css'>
-		
+	
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100' rel='stylesheet' type='text/css'>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap-Theme -->
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/js/search-redirect.js"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"></script>
+
 
     <link rel="stylesheet" href="/css/style.css">
 	</head>
@@ -21,18 +27,16 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Navigation ein-/ausblenden</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+           
           </button>
-          <a class="navbar-brand" href="./index"><strong>Mediwrite</strong></a>
+          <a class="navbar-brand" href="home"><strong>Mediwrite</strong></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
         	<div style="float:left;">
           		<ul class="nav navbar-nav">
-           		 	<li class="active"><a href="#">Patienten</a></li>
-            		<li><a href="#">Operationsbericht</a></li>
-            		<li><a href="#">Befundschreiben</a></li>
+           		 	<li class="active nav-item"><a href="patient">Patienten</a></li>
+            		<li class="nav-item"><a href="operationsbericht">Operationsbericht</a></li>
+            		<li class="nav-item"><a href="arztbrief">Arztbrief</a></li>
 	         	</ul>
 	     	</div>
         </div><!--/.nav-collapse -->
@@ -41,25 +45,52 @@
 
     <script type="text/javascript">
         $(function(){
-            $('#orderModal').modal({
+            $('#patientModal').modal({
                 keyboard: true,
                 backdrop: "static",
                 show:false,
-                
-            }).on('show', function(){
-                var getIdFromRow = $(event.target).closest('tr').data('id');
-                //make your ajax call populate items or what even you need
-                $(this).find('#orderDetails').html($('<b> Order Id selected: ' + getIdFromRow  + '</b>'))
+
+            }).on('show', function(e){ //subscribe to show method
+                var getIdFromRow = $(event.target).closest('tr').data('id'); //get the id from tr
+                var getLastnameFromRow = $(event.target).closest('tr').find('td').eq(0).html();
+                var getFirstnameFromRow = $(event.target).closest('tr').find('td').eq(1).html();
+                var getHealthinsuranceFromRow = $(event.target).closest('tr').find('td').eq(2).html();
+                var getFamilydoctorFromRow = $(event.target).closest('tr').find('td').eq(3).html();
+
+
+                $(this).find('#patientId').html($('<div><b> Patient Id:</b> ' + getIdFromRow + '</div>'))
+                $(this).find('#patientLastname').html($('<div><b> Lastname:</b> ' + getLastnameFromRow + '</div>'))
+                $(this).find('#patientFirstname').html($('<div><b> Firstname:</b> ' + getFirstnameFromRow + '</div>'))
+                $(this).find('#patientKrankenkasse').html($('<div><b> Krankenkasse:</b> ' + getHealthinsuranceFromRow + '</div>'))
+                $(this).find('#patientHausarzt').html($('<div><b> Hausarzt:</b> ' + getFamilydoctorFromRow + '</div>'))
+
             });
         });
-        </script>
+
+        $(document).ready(function() {
+            $('#patienten').DataTable({
+                paging: false
+            });
+        });
+
+    </script>
+
+
+    <script>
+        $(document).on('click','.modalBtn',function(e){
+
+            e.stopPropagation();
+
+        });
+    </script>
+
 
 <div class="whitebox">
-    <table class="table table-hover table-responsive">
+    <table id="patienten" class="table table-hover table-responsive table-bordered">
         <thead>
         <tr>
-        <th><strong>Firstname</strong></th>
         <th><strong>Lastname</strong></th>
+        <th><strong>Firstname</strong></th>
         <th><strong>Krankenkasse</strong></th>
         <th><strong>Hausarzt</strong></th>
         <th></th>
@@ -69,13 +100,13 @@
             <tbody>
             <% patient.forEach(function(patient){ %>
 
-                <tr data-toggle="modal" data-id="1" data-target="#orderModal">
-                    <td><%= patient.firstname %></td>
-                    <td><%= patient.lastname %></td>
-                    <td><%= patient.healthinsurance %></td>
-                    <td><%= patient.familydoctor %></td>
-                    <td>PLATZHALTER</td>
-                    <td>PLATZHALTER</td>
+                <tr class="patient-row" data-toggle="modal" data-id="<%= patient._id %>" data-target="#patientModal">
+                    <td class="lastname"><%= patient.lastname %></td>
+                    <td class="firstname"><%= patient.firstname %></td>
+                    <td class="healthinsurance"><%= patient.healthinsurance %></td>
+                    <td class="familydoctor"><%= patient.familydoctor %></td>
+                    <td><button class="modalBtn">Operationbericht</button></td>
+                    <td><button class="modalBtn">Arztbrief</button></td>
                 </tr>
 
             <%  }) %>
@@ -85,16 +116,29 @@
 </div>
 
     <!-- ////// BEGINN DES MODAL-POPUP-FENSTERS ////// -->
-                    <div id="orderModal" class="modal hide fade" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                             <h3>Order</h3>
-                    
-                        </div>
-                        <div id="orderDetails" class="modal-body"></div>
-                        <div id="orderItems" class="modal-body"></div>
-                        <div class="modal-footer">
-                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <div id="patientModal" class="modal fade" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel"><b>Patienteninformationen</b></h4>
+                                </div>
+                                <div id="patientId" class="modal-body"></div>
+                                <div id="patientLastname" class="modal-body"></div>
+                                <div id="patientFirstname" class="modal-body"></div>
+                                <div id="patientKrankenkasse" class="modal-body"></div>
+                                <div id="patientHausarzt" class="modal-body"></div>
+                                <div class="modal-footer">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                          <button type="button" class="btn btn-default">Arztbrief</button>
+                                        </div>
+                                        <div class="btn-group" role="group">
+                                          <button type="button" class="btn btn-default">Operationsbericht</button>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 	</body>

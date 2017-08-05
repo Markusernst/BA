@@ -1,5 +1,9 @@
 function register(app, mongoose, jsonParser, http) {
 
+	app.get("/home", require("./home")(app));
+	app.get("/operationsbericht", require("./operationsbericht")(app));
+	app.get("/arztbrief", require("./arztbrief")(app));
+
 	app.get("/patient", require("./get-all-patient")(app, mongoose));
 	app.get("/patient/:name", require("./get-patient")(app, mongoose));
 	app.get("/patient/id/:id", require("./get-patient-id")(app, mongoose));

@@ -1,2 +1,2 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/db_diagnose_rep');
+mongoose.connect('mongodb://127.0.0.1/db_diagnose_rep');
