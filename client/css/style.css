@@ -25,7 +25,7 @@ th {
 	border: 1px solid #E6E6E6;
 }
 
-td {
+#patienten td {
 	cursor: pointer;
 }
 
@@ -47,6 +47,11 @@ textarea {
    resize: vertical;
 }
 
+.modal .modal-body {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
 .modal-body {
 	padding:5px;
 	padding-bottom:10px;
@@ -56,8 +61,17 @@ textarea {
 	padding: 0px;
 }
 
+.btn{
+	padding:6px 8px;
+}
+
 button.close {
     padding: 3px;
+}
+
+.dropdown-menu{
+	padding-top: 0px;
+	padding-bottom: 0px;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -71,13 +85,7 @@ button.close {
     background-image: linear-gradient(to bottom,#5599ca 0,#3492d6 100%);
 }
 
-.floating-action-button1 {
-  position: fixed;
-  bottom: 40px;
-  right: 320px;
- }
-  
-.floating-action-button2 {
+.floating-action-button3 {
   position: fixed;
   bottom: 40px;
   right: 40px;
@@ -110,85 +118,17 @@ button.close {
 		background-color:#fff;
 		}
 
-.description {
-		min-height: 208px;
-		}
-.seriesimage {
-		float:left;
-		padding-right:20px;
-		}
-
 strong {
 		font-weight:600;
 		}
 
-/* ////////// WATCHINGLISTE (persoenliche Serienliste) //////////// */
-.plusSign {
-	font-size: xx-large;
-    padding: 5;
-    line-height: 0.5;
+
+@media all {
+	.page-break	{ display: none; }
 }
 
-/* --- Schaue-ich-gerade-Tabelle ---- */
-.prozessSpalte {
-	width: 50px;
+@media print {
+	.page-break	{ display: block; page-break-before: always; }
+	button, .btn { display: none !important; }
+	#opdauer { display: block !important; }
 }
-
-/* ////////// USERPROFIL ///////////// */
-
-.userinfo {
-	margin-bottom:20px;
-}
-
-/* --- Legende GenreStatistik --- */
-.legendenSpalteSchrift {
-	padding-left:15px;
-}
-
-.legendenZeile {
-	border-top: 3px solid #fff;
-    border-bottom: 3px solid #fff;
-}
-
-.legend {
-    padding-top:20px;
-}
-
-.legend .title {
-    display: block;
-    margin-bottom: 0.5em;
-    line-height: 1.2em;
-    padding: 0 0.3em;
-}
-
-.legend .color-sample {
-    display: block;
-    float: left;
-    width: 1em;
-    height: 1em;
-    border: 2px solid; /* Comment out if you don't want to show the fillColor */
-    border-radius: 0.5em; /* Comment out if you prefer squarish samples */
-    margin-right: 0.5em;
-}
-
-/* //////////// INDEX ////////// */
-.listInPanel {
-	padding: 10px 0;
-}
-
-/* //////////// Searchbar ////////*/
-.searchbutton {
-	background-color:#212121;
-	border-color:#212121;
-	color:#ccc;
-	background-image: none;
-	text-shadow:none;
-}
-
-.searchbutton:hover {
-	background-color:#212121;
-	border-color:#212121;
-	color:#fff;
-	background-image: none;
-}
-

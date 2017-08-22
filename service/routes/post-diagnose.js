@@ -1,15 +1,11 @@
 function postDiagnose(app, mongoose) {
 	return function(req, res) {
-		var longterm = req.body.longterm;
-        var key = req.body.key;
-        var abbreviation = req.body.abbreviation;
+		var text = req.body.text;
         var nodes = req.body.nodes;
         var changed = Date.now();
         
         mongoose.model('Diagnose').create({
-            longterm : longterm,
-            key : key,
-            abbreviation : abbreviation,
+            text : text,
             nodes : nodes,
             changed : changed
             

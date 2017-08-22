@@ -13,6 +13,10 @@ var express = require('express'),
     diagnose_rep = require('../model/diagnose_rep'),
     db_abbreviation_rep = require('../model/db_abbreviation_rep'),
     abbreviation_rep = require('../model/abbreviation_rep'),
+    db_berichte = require('../model/db_berichte'),
+    berichte = require('../model/berichte'),
+    db_briefe = require('../model/db_briefe'),
+    briefe = require('../model/briefe'),
 	mongoose = require('mongoose'),
 	app = express(),
     ejs = require("ejs"),
@@ -159,9 +163,7 @@ cron.schedule('*/15 * * * * *', function(){
                             for(var i = 0; i < diagnosedata.length; i++) {
                                 mongoose.model('Diagnose_rep').findOneAndUpdate({ fatherid:diagnosedata[i]._id }, {
 
-                                    longterm:diagnosedata[i].longterm,
-                                    key:diagnosedata[i].key,
-                                    abbreviation:diagnosedata[i].abbreviation,
+                                    text:diagnosedata[i].text,
                                     nodes:diagnosedata[i].nodes,
                                     changed:Date.now(),
                                     fatherid:diagnosedata[i]._id
@@ -204,8 +206,7 @@ cron.schedule('*/15 * * * * *', function(){
                             for(var i = 0; i < opsdata.length; i++) {
                                 mongoose.model('Ops_rep').findOneAndUpdate({ fatherid:opsdata[i]._id }, {
 
-                                    name:opsdata[i].name,
-                                    ops:opsdata[i].ops,
+                                    text:opsdata[i].text,
                                     nodes:opsdata[i].nodes,
                                     changed:Date.now(),
                                     fatherid:opsdata[i]._id
@@ -345,16 +346,12 @@ cron.schedule('*/15 * * * * *', function(){
                             
                             if(diagnose_rep[i].changed > emulated.lastDiagnoseUpdate){
 
-                                var longterm = diagnose_rep[i].longterm;
-                                var key = diagnose_rep[i].key;
-                                var abbreviation = diagnose_rep[i].abbreviation;
+                                var text = diagnose_rep[i].text;
                                 var nodes = diagnose_rep[i].nodes;
                                 var changed = Date.now();
     
                                 var data = {};
-                                data['longterm'] = longterm;
-                                data['key'] = key;
-                                data['abbreviation'] = abbreviation;
+                                data['text'] = text;
                                 data['nodes'] = nodes; 
                                 data['changed'] = changed;
     
@@ -403,14 +400,13 @@ cron.schedule('*/15 * * * * *', function(){
                             
                             if(ops_rep[i].changed > emulated.lastOpsUpdate){
 
-                                var name = ops_rep[i].name;
+                                var text = ops_rep[i].text;
                                 var ops = ops_rep[i].ops;
                                 var nodes = ops_rep[i].nodes;
                                 var changed = Date.now();
     
                                 var data = {};
-                                data['name'] = name;
-                                data['ops'] = ops;
+                                data['text'] = text;
                                 data['nodes'] = nodes;
                                 data['changed'] = changed;
     
@@ -459,15 +455,13 @@ cron.schedule('*/15 * * * * *', function(){
                             
                             if(abbreviation_rep[i].changed > emulated.lastAbbreviationUpdate){
 
-                                var name = abbreviation_rep[i].name;
-                                var ops = abbreviation_rep[i].ops;
-                                var nodes = abbreviation_rep[i].nodes;
+                                var word = abbreviation_rep[i].word;
+                                var abbreviation = abbreviation_rep[i].abbreviation;
                                 var changed = Date.now();
-    
+
                                 var data = {};
-                                data['name'] = name;
-                                data['ops'] = ops;
-                                data['nodes'] = nodes;
+                                data['word'] = word;
+                                data['abbreviation'] = abbreviation;
                                 data['changed'] = changed;
     
                                 var jsondata = JSON.stringify(data);

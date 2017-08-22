@@ -5,8 +5,7 @@ function putOpsId(app, mongoose) {
 
         mongoose.model('Ops').findOneAndUpdate({ _id:id }, {
 
-                name:req.body.name, 
-                ops:req.body.ops,
+                text:req.body.text,
                 nodes:req.body.nodes,
                 changed:changed
 

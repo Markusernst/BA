@@ -8,6 +8,8 @@ function register(app) {
 	app.get("/bower_components/bootstrap/dist/css/:stylesheetname", require("./get-bootstrap-css.js")(app));
 	app.get("/img/:imgname", require("./get-images.js")(app));
 	app.get("/bower_components/jquery/dist/:jsname", require("./get-jquery.js")(app));
+	app.get("/bower_components/bootstrap-treeview/dist/:jsname", require("./get-bootstrap-treeview.js")(app));
+	app.get("/bower_components/bootstrap-treeview/src/js/:jsname", require("./get-bootstrap-treeview_good.js")(app));
 	
 }
 module.exports = {

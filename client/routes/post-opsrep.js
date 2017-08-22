@@ -1,14 +1,12 @@
 function postOpsRep(app, mongoose) {
 	return function(req, res) {
-		var name = req.body.name;
-        var ops = req.body.ops;
+		var text = req.body.text;
         var nodes = req.body.nodes;
         var changed = Date.now();
         var fatherid = req.body.fatherid;
 
         mongoose.model('Ops_rep').create({
-            name : name,
-            ops : ops,
+            text : text,
             nodes : nodes,
             changed : changed,
             fatherid : fatherid

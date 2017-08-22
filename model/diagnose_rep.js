@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 var diagnose_rep_Schema = new mongoose.Schema({   
-	longterm: String, 
-	key: String,
-	abbreviation: String,
+	text: String,
 	nodes: Array,
 	changed: String,
 	fatherid: String

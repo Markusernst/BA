@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');  
 var ops_rep_Schema = new mongoose.Schema(
 {
-   name:String,
-   ops:String,
+   text:String,
    nodes:Array,
    changed: String,
    fatherid: String

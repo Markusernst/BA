@@ -5,71 +5,53 @@
 		<title>Operationsbericht</title>
 	
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100' rel='stylesheet' type='text/css'>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css"></script>
+    <script src="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+    <script src="/bower_components/bootstrap-treeview/src/js/bootstrap-treeview.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-
+    <script src="/js/operation.js"></script>
     <link rel="stylesheet" href="/css/style.css">
+
 	</head>
 	<body>
-  
-  <script type="text/javascript">
-    $(document).ready(function () {
 
-      $("#addPlain").click(function () {
-        var id = ($('#content').children().length + 1).toString();
-        $('#content').append(
-          '<div id="control-group' + id + '" class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><button type="button" class="close" onclick="closeFunction(this)" aria-hidden="true">&times;</button><h3>#' + id +' Plain</h3><textarea class="form-control" rows="3"></textarea><p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p></div></div></div>'
-        );
-      });
-
-      $("#addOPS").click(function () {
-        var id = ($('#content').children().length + 1).toString();
-        $('#content').append(
-          '<div id="control-group' + id + '" class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><button type="button" class="close" onclick="closeFunction(this)" aria-hidden="true">&times;</button><h3>#' + id +' Ops</h3><textarea class="form-control" rows="3"></textarea><p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p></div></div></div>'
-        );
-      });
-
-      $("#addEmpfang").click(function () {
-        var id = ($('#content').children().length + 1).toString();
-        $('#content').append(
-          '<div id="control-group' + id + '" class="col-sm-6 col-md-4"><div class="thumbnail"><div class="caption"><button type="button" class="close" onclick="closeFunction(this)" aria-hidden="true">&times;</button><h3>#' + id +' Empfang</h3><textarea class="form-control" rows="3"></textarea><p><a href="#" class="btn btn-primary" role="button">Button</a><a href="#" class="btn btn-default" role="button">Button</a></p></div></div></div>'
-        );
-      });
-
-    });
-
-    function closeFunction(elem) {
-      var parentID = elem.parentNode.parentNode.parentNode.id;
-      var parent = elem.parentNode.parentNode.parentNode;
-      $('#'+parentID+'').remove();
-    }
-
-  </script>
-
+    <div style="z-index:1000" class="floating-action-button3">
     <div style="z-index:1000" class="btn-group dropup floating-action-button1">
-    <button type="button" class="btn btn-info btn-fab btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">Hinzufügen</i></button>
+    <button type="button" class="btn btn-info btn-fab btn-raised dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span>&nbsp;</button>
       <ul class="dropdown-menu dropdown-menu-right" style="min-width:0; background-color:transparent;">
-        <li><button id="addEmpfang" style="width:100%" type="button" class="btn btn-info btn-fab btn-raised"><i class="material-icons">Empfänger</i></button></li>
-        <li><button id="addOPS" style="width:100%" type="button" class="btn btn-info btn-fab btn-raised"><i class="material-icons">OPS</i></button></li>
-        <li><button id="addPlain" style="width:100%" type="button" class="btn btn-info btn-fab btn-raised"><i class="material-icons">Plain</i></button></li>
+        <li><button id="addPlain" style="width:100%" type="button" class="btn btn-info btn-fab btn-raised"><i class="material-icons">Textfeld</i></button></li>
       </ul>
     </div>
 
 <div style="z-index:1000" class="btn-group dropup floating-action-button2">
-    <button type="button" class="btn btn-info btn-fab btn-raised"><i class="material-icons">Bericht öffnen</i></button>
-    <button type="button" class="btn btn-info btn-fab btn-raised"><i class="material-icons">Bericht speichern</i></button>
-</div>
+  <button type="button" class="btn btn-info btn-fab btn-raised" onClick="window.print()"><span class="glyphicon glyphicon-print"></span>&nbsp;</button>
+  <button type="button" id="berichtoeffnenauswahlbutton" class="btn btn-info btn-fab btn-raised modal-toggle" data-toggle="modal" data-target="#berichtoeffnenauswahl"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;</button>
+  <button type="button" id="berichtspeichernbutton" class="btn btn-info btn-fab btn-raised modal-toggle" data-toggle="modal" data-target="#berichtspeichernauswahl"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;</button>
 
+</div>
+</div>
 
 		 <!-- Fixierte Navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -79,38 +61,259 @@
             <span class="sr-only">Navigation ein-/ausblenden</span>
 
           </button>
-          <a class="navbar-brand" href="home"><strong>Mediwrite</strong></a>
+          <a class="navbar-brand" href="/home"><strong>Mediwrite</strong></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
         	<div style="float:left;">
           		<ul class="nav navbar-nav">
-           		 	<li class="nav-item"><a href="patient">Patienten</a></li>
-            		<li class="active nav-item"><a href="operationsbericht">Operationsbericht</a></li>
-            		<li class="nav-item"><a href="arztbrief">Arztbrief</a></li>
+           		 	<li class="nav-item"><a href="/patient">Patienten</a></li>
+            		<li class="active nav-item"><a href="/operationsbericht">Operationsbericht</a></li>
+            		<li class="nav-item"><a href="/arztbrief">Arztbrief</a></li>
 	         	</ul>
 	     	</div>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
+    <!-- Patientenauswahl Modal -->
+    <div id="patientauswahl" class="modal fade" role="dialog" aria-labelledby="patientModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="ModalLabelPatient"><b>Patienten wählen</b></h4>
+                              </div>
+                              <div class="modal-body">
+                                <table id="patienten" class="table table-hover table-responsive table-bordered">
+                                  <thead>
+                                  <tr>
+                                  <th><strong>Lastname</strong></th>
+                                  <th><strong>Firstname</strong></th>
+                                  <th><strong>Krankenkasse</strong></th>
+                                  <th><strong>Hausarzt</strong></th>
+                                  </tr>
+                                  </thead>
+                                      <tbody id="bodyCal">
+                                      </tbody>
+                                </table>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <!-- Bericht öffnen Modal -->
+    <div id="berichtoeffnenauswahl" class="modal fade" role="dialog" aria-labelledby="oeffnenModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="ModalLabelOpen"><b>Bericht öffnen</b></h4>
+                              </div>
+                              <div class="modal-body">
+
+                                <table id="vorlagen" class="table table-hover table-responsive table-bordered">
+                                  <thead>
+                                  <tr>
+                                  <th><strong>Vorlagen</strong></th>
+                                  </tr>
+                                  </thead>
+                                      <tbody id="bodyVorlagenTable">
+                                      </tbody>
+                                </table>
+
+                                <table id="berichte" class="table table-hover table-responsive table-bordered">
+                                  <thead>
+                                  <tr>
+                                  <th><strong>Titel</strong></th>
+                                  <th><strong>Datum</strong></th>
+                                  <th><strong>Nachname</strong></th>
+                                  <th><strong>Vorname</strong></th>
+                                  </tr>
+                                  </thead>
+                                      <tbody id="bodyBerichteTable">
+                                      </tbody>
+                                </table>
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <!-- Bericht speichern Modal -->
+    <div id="berichtspeichernauswahl" class="modal fade" role="dialog" aria-labelledby="speichernModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="ModalLabelSave"><b>Bericht speichern</b></h4>
+                              </div>
+                              <div class="modal-body">
+                                <div style="width=100%; padding-bottom:5px; border-bottom: 1px solid #ccc;">
+                                <table id="speicheroptionen">
+                                  <tbody>
+                                    <tr>
+                                      <td style="padding-right:15px;"><label class="control-label">Titel des Berichts:</label></td>
+                                      <td><input type="text" id="titelinput" class="form-control"></td>
+                                      <td style="padding:5px 0px 0px 15px;"><label><input type="checkbox" id="vorlageCheck" value="">Vorlage</label></td>
+                                      <td style="padding-left:15px;"><button onclick="berichtspeichern()" data-dismiss='modal' type="button" class="btn btn-primary btn-default">Speichern</button></td>
+                                    </tr>
+                                  <tbody>
+                                </table>
+                                </div>
+
+                                <p style="margin-bottom:-30px;"><label style="padding-top:15px;" class="control-label">Überspeichern eines bestehenden Berichts:</label></p>
+                                <table id="berichteSpeichern" class="table table-hover table-responsive table-bordered">
+                                  <thead>
+                                  <tr>
+                                  <th><strong>Titel</strong></th>
+                                  <th><strong>Datum</strong></th>
+                                  <th><strong>Nachname</strong></th>
+                                  <th><strong>Vorname</strong></th>
+                                  </tr>
+                                  </thead>
+                                      <tbody id="bodySpeichernTable">
+                                      </tbody>
+                                </table>
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <!-- Treeview OPS Modal -->
+    <div id="opstreeview" class="modal fade" role="dialog" aria-labelledby="opstreeviewModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="ModalLabelOPS"><b>Operations- und Prozedurenschlüssel wählen</b></h4>
+                              </div>
+                              <div class="modal-body">
+                               
+                                <div id="treeops"></div>
+                               
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+    <!-- Treeview Diagnose Modal -->
+    <div id="diagnosetreeview" class="modal fade" role="dialog" aria-labelledby="diagnosetreeviewModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="ModalLabelDiagnose"><b>Operations- und Prozedurenschlüssel wählen</b></h4>
+                              </div>
+                              <div class="modal-body">
+                               
+                                <div id="treediagnose"></div>
+                               
+
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
 
               <div id="content" style="margin-bottom:200px" class="container">
+
+
                 <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">
                     <div class="caption">
-                      <h3>Sender</h3>
-                      <textarea class="form-control" rows="3"></textarea>
-                      <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
+                      <h3 style="text-align:center;">Korrespondent</h3>
+                      </div>
+                      <table id="korrespondent">
+                          <tbody>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Institut:</label></td>
+                                  <td><input type="text" id="institut" class="form-control" placeholder="Institut"></td>
+                              </tr>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Leitende Ärzte:</label></td>
+                                  <td><input type="text" id="chefarzt" class="form-control" placeholder="Leitende Ärzte"></td>
+                              </tr>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Addresse:</label></td>
+                                  <td><input type="text" id="korAdresse" class="form-control" placeholder="Addresse"></td>
+                              </tr>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Telefon:</label></td>
+                                  <td><input type="text" id="korTele" class="form-control" placeholder="Telefon"></td>
+                              </tr>
+                          <tbody>
+                      </table>
                   </div>
                 </div>
-            
+
                 <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">
                     <div class="caption">
-                      <h3>Empfänger</h3>
-                      <textarea class="form-control" rows="3"></textarea>
-                      <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                      <h3 style="text-align:center;">Patient</h3>
+                    </div>
+                    <table id="patientOP">
+                          <tbody>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Name:</label></td>
+                                  <td><input type="text" id="patientname" class="form-control" placeholder="Name"></td>
+                              </tr>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Vorname:</label></td>
+                                  <td><input type="text" id="patientfirstname" class="form-control" placeholder="Vorname"></td>
+                              </tr>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Krankenkasse:</label></td>
+                                  <td><input type="text" id="patienthealth" class="form-control" placeholder="Krankenkasse"></td>
+                              </tr>
+                              <tr>
+                                  <td style="padding-right:15px;"><label class="control-label">Hausarzt:</label></td>
+                                  <td><input type="text" id="patientdoc" class="form-control" placeholder="Hausarzt"></td>
+                              </tr>
+                          <tbody>
+                    </table>
+                    <p><a id="patientenauswahlbutton" href="#" class="btn btn-primary modal-toggle" role="button" data-toggle="modal" data-target="#patientauswahl">Wählen</a></p>
+                  </div>
+                </div>
+
+
+
+                <div class="col-sm-6 col-md-4">
+                  <div class="thumbnail">
+                    <div class="caption">
+                      <h3 style="text-align:center;">Operation</h3>
+                    </div>
+                    <label>Post-OP Diagnose</label>
+                    <div style="padding-bottom:10px; width:100%;" class="input-group diagnose">
+                      <textarea id="diagnose" class="form-control" rows="2" placeholder="Diagnose"></textarea>
+                      <button type="button" id="diagnosebutton" class="btn btn-primary modal-toggle" data-toggle="modal" data-target="#diagnosetreeview" aria-hidden="true">Wählen</button>
+                    </div>
+
+                    <label>Therapie</label>
+                    <div style="padding-bottom:10px; width:100%;" class="input-group diagnose">
+                      <textarea id="ops" class="form-control" rows="2" placeholder="Operationen- und Prozedurenschlüssel"></textarea>
+                      <button type="button" id="opsbutton" class="btn btn-primary modal-toggle" data-toggle="modal" data-target="#opstreeview" aria-hidden="true">Wählen</button>
+                    </div>
+
+                    <label class="control-label" for="date">Operationsdatum</label>
+                    <div style="padding-bottom:10px;" class="input-group date">
+                      <input id="datum" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                    </div>
+                    <label>Operationsdauer</label>
+                    <div class="btn-group">
+
+                      <button id="opdauer" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="opdauerspan" data-bind="label">5 Minuten</span>&nbsp;<span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li><a class="menu_item" href="#">5 Minuten</a></li>
+                        <li><a class="menu_item" href="#">10 Minuten</a></li>
+                        <li><a class="menu_item" href="#">15 Minuten</a></li>
+                        <li><a class="menu_item" href="#">20 Minuten</a></li>
+                        <li><a class="menu_item" href="#">25 Minuten</a></li>
+                        <li><a class="menu_item" href="#">30 Minuten</a></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -118,24 +321,38 @@
                 <div class="col-sm-6 col-md-4">
                   <div class="thumbnail">
                     <div class="caption">
-                      <h3>Patient</h3>
-                      <textarea class="form-control" rows="3"></textarea>
-                      <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                      <h3 style="text-align:center;">Ausführendes Personal</h3>
+                    </div>
+                    
+                    <div style="padding-bottom:10px;">
+                      <label>Operateur</label><input id="operateur" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div style="padding-bottom:10px;">
+                      <label>Anästhesie</label><input id="anaesthesie" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div style="padding-bottom:10px;">
+                      <label>Instrum</label><input id="instrum" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div style="padding-bottom:10px;">
+                      <label>Springer</label><input id="springer" type="text" class="form-control" placeholder="Name">
                     </div>
                   </div>
                 </div>
 
-                <div class="col-sm-6 col-md-4">
-                  <div class="thumbnail">
-                    <div class="caption">
-                      <h3>Operation</h3>
-                      <textarea class="form-control" rows="3"></textarea>
-                      <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                    </div>
-                  </div>
-                </div>
+                
+                <div class="page-break"></div>
 
               </div>
 
+              <% if (typeof patient !== 'undefined') { %>
+                    <script>
+                      var patientData = <%- JSON.stringify(patient) %>;
+                      console.log(patientData[0]);
+                      $('#patientname').val(patientData[0].lastname);
+                      $('#patientfirstname').val(patientData[0].firstname);
+                      $('#patienthealth').val(patientData[0].healthinsurance);
+                      $('#patientdoc').val(patientData[0].familydoctor);
+                    </script>
+                    <% } %>
 	</body>
 </html>

@@ -1,8 +1,7 @@
 var mongoose = require('mongoose');  
 var opsSchema = new mongoose.Schema(
 {
-   name:String,
-   ops:String,
+   text:String,
    nodes:Array,
    changed: String
 });

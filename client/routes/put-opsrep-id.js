@@ -5,8 +5,7 @@ function putOpsRepId(app, mongoose) {
 
         mongoose.model('Ops_rep').findOneAndUpdate({ _id:id }, {
 
-                name:req.body.name, 
-                ops:req.body.ops,
+                text:req.body.text,
                 nodes:req.body.nodes,
                 changed:changed,
                 fatherid:req.body.fatherid

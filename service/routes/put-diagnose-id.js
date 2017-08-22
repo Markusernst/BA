@@ -5,9 +5,7 @@ function putDiagnoseId(app, mongoose) {
 
         mongoose.model('Diagnose').findOneAndUpdate({ _id:id }, {
 
-                longterm:req.body.longterm, 
-                key:req.body.key,
-                abbreviation:req.body.abbreviation,
+                text:req.body.text,
                 nodes:req.body.nodes,
                 changed:changed
                 
